@@ -466,7 +466,7 @@ class ActivationQuantizeConfig(QuantizeConfig):
       # 'relu' should generally get fused into the previous layer.
       return [quantizers.MovingAverageQuantizer(
           num_bits=8, per_axis=False, symmetric=False, narrow_range=False)]
-    elif layer.activation.__name__ in ['linear', 'softmax']:
+    elif layer.activation.__name__ in ['linear', 'softmax', 'sigmoid']:
       return []
 
     raise ValueError('Activation {} not supported by '
